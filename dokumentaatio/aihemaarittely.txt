@@ -1,0 +1,29 @@
+Aihe: Muistipeli
+
+Toteutetaan graafisen käyttöliittymän avulla muistipeli.
+
+Muistipelissä pelaajan on tarkoituksena saada kerättyä mahdollisimman monta kuvaparia mahdollisimman 
+vähillä vuoroilla. Tarkempi selostus löytyy Wikipediasta: http://fi.wikipedia.org/wiki/Muistipeli.
+
+Tässä toteutettava muistipeli on yhden tai useamman pelaajan muistipeli. Pelaajat voivat itse valita
+vaikeustason (eli kuvaparien lukumäärän).
+
+
+Käyttäjät: Pelaaja ja Ylläpito
+
+Kaikkien käyttäjien toiminnot:
+
+ pelin pelaaminen
+   - vaikeustason valinta
+
+Pelaajan toiminnot:
+
+ käyttäjänimen valinta
+
+ pelin pelaaminen
+   - vaikeustason valitan
+
+
+Ylläpidon toiminnot:
+ - kuvien lisääminen muistipeliin
+
