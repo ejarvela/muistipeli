@@ -1,3 +1,4 @@
 Tuntikirjanpito:
 
 15.1.	1.5h	ensimmäisen deadlinen tehtävät
+20.1.   1h      netbeans ja github -testailua
