@@ -8,11 +8,11 @@ public class AwtImage extends Frame {
     Image img;
 
     public AwtImage() {
-        super("Image Frame");
+        super("Kuva numero tähän-kuvan-nro-pelilaudalla");
         MediaTracker mt = new MediaTracker(this);
-        img = Toolkit.getDefaultToolkit().getImage("binaries.gif");
+        img = Toolkit.getDefaultToolkit().getImage("tikru.JPG");
         mt.addImage(img, 0);
-        setSize(600, 600);
+        setSize(765, 507);
         setVisible(true);
         addWindowListener(new WindowAdapter() {
             @Override
@@ -31,7 +31,7 @@ public class AwtImage extends Frame {
     public void paint(Graphics g) {
         if (img != null) {
 
-            g.drawImage(img, 100, 100, this);
+            g.drawImage(img, 0, 0, this);
         } else {
             g.clearRect(0, 0, getSize().width, getSize().height);
         }
