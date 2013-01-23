@@ -1,8 +1,6 @@
 
 package muistipeli;
 
-import java.util.ArrayList;
-
 
 public class Pelaaja {
     

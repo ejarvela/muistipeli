@@ -21,8 +21,11 @@ public class Kortti {
        this.kortinNro = nro;
    }
     
-   public void nostaKortti(){
-       //kortinnosto
+   public void nostaKortti() throws Exception{
+       //nosta kortti
+       NaytaKuva kortinNosto = new NaytaKuva();
+       kortinNosto.kuvanAvaus(kortinNosto);
+            
    }
    
    public int getKortinNro(){

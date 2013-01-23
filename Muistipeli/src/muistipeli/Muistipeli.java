@@ -13,7 +13,7 @@ public class Muistipeli {
         pelaajat = new ArrayList<Pelaaja>();
     }
 
-    public void kaynnista() {
+    public void kaynnista() throws Exception {
         System.out.println("Tervetuloa Muistipeliin!");
         System.out.println("");
         System.out.println("Montako pelaajaa? (1-4)");
@@ -53,6 +53,11 @@ public class Muistipeli {
         
         System.out.println("");
         System.out.println("Peli alkaa.");
+        
+        Kortti kortti1 = new Kortti("kissa");
+        kortti1.nostaKortti();
+        
+        System.out.println("Anna numero");
         
         }
     }

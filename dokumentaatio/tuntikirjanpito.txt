@@ -3,4 +3,4 @@ Tuntikirjanpito:
 15.1.	1.5h	ensimmäisen deadlinen tehtävät
 19.1.	0.5h	suunnittelua (luokkakaavio yms.)
 20.1.   1h      netbeans ja github -testailua
-22.1.	
+22.1.	3h	luokkakaavio, ohjelmoinnin aloitus
