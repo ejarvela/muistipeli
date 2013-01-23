@@ -23,11 +23,9 @@ public class Kortti {
     
    public void nostaKortti() throws Exception{
        //nosta kortti
-       NaytaKuva kortinNosto = new NaytaKuva();
-       kortinNosto.kuvanAvaus(kortinNosto);
-            
+       AwtImage kuva = new AwtImage();
+       
    }
-   
    public int getKortinNro(){
        return this.kortinNro;
    }
