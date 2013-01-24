@@ -2,6 +2,7 @@ package muistipeli;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,6 +17,7 @@ public class Muistipeli {
     }
 
     public void kaynnista() throws Exception {
+        
         System.out.println("Tervetuloa Muistipeliin!");
         System.out.println("");
         System.out.println("Montako pelaajaa? (1-4)");
@@ -39,7 +41,8 @@ public class Muistipeli {
             nimi = lukija.nextLine();
             pelaajat.add(new Pelaaja(nimi));
         }
-
+        
+        System.out.println("");
         System.out.println("Valitse vaikeustaso.");
         System.out.println("1 - 3x4");
         System.out.println("2 - 4x5");
@@ -54,26 +57,28 @@ public class Muistipeli {
             vaikeus = Integer.parseInt(lukija.nextLine());
         }
 
+        //luodaan pelattavat kortit
+        
         luoKortit(vaikeus);
 
         System.out.println("");
         System.out.println("Peli alkaa.");
 
-        Kortti kortti1 = new Kortti("kissa");
-        kortti1.nostaKortti();
+       Kortti kortti1 = new Kortti("lumi");
 
     }
 
     public void luoKortit(Integer vaikeus) throws Exception {
 
         ArrayList<String> kuvat = new ArrayList<String>();
-        ArrayList<Integer> kuvienNrot = new ArrayList<Integer>();
+        HashSet<Integer> kuvienNumerot = new HashSet<Integer>();
         Random rand = new Random();
+        
         int korttienMaara;
         int randomNumero;
         int i;
-        int a = 0;
-        int y = 0;
+        int e;
+        int g;
 
         if (vaikeus == 1) {
             korttienMaara = 6;
@@ -85,30 +90,42 @@ public class Muistipeli {
             korttienMaara = 21;
         }
 
-        while (a < korttienMaara) {
-            randomNumero = rand.nextInt(21);
+        g=korttienMaara;
 
-            for (i = 0; i < kuvienNrot.size(); i++) {
-                if (randomNumero == kuvienNrot.get(i)) {
-                   y++;
-                } else {
-                    kuvienNrot.add(randomNumero);
-                    a++;
-                    break;
+        
+        //arpoo kuvat
+        
+        for (i = 0; i < g; i++) {
+            e = rand.nextInt(21);
+            kuvienNumerot.add(e);
+            if (kuvienNumerot.size() <= korttienMaara) {
+                if (kuvienNumerot.size() == korttienMaara) {
+                    g = korttienMaara;
                 }
+                g++;
+                kuvienNumerot.add(e);
             }
         }
+        System.out.println("Ten Unique random numbers from 1 to 20 are  : " + kuvienNumerot);
+        
 
-
+        //lukee kuvien nimet tiedostosta
+        
         File tiedosto = new File("src/muistipeli/kuvat.txt");
 
         TiedostonLukija fileReader = new TiedostonLukija(tiedosto);
         kuvat = fileReader.haeKuvat();
-
-
-        // System.out.println(kuvat.get(0).toString());
-
-
+        
+        //luo kortit
+        
+        
+        
+//        for (i=0;i<kuvienNumerot.size();i++){
+//            String kortinNimi = kuvat.get(kuvienNumerot.get)
+//            Kortti 
+//        }
+        
+        
 
     }
 }

@@ -21,9 +21,9 @@ public class Kortti {
        this.kortinNro = nro;
    }
     
-   public void nostaKortti() throws Exception{
+   public void nostaKortti(String kuvanNimi) throws Exception{
        //nosta kortti
-       AwtImage kuva = new AwtImage();
+       AwtImage kuva = new AwtImage(this.nimi);
        
    }
    public int getKortinNro(){

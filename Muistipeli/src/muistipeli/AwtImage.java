@@ -7,10 +7,10 @@ public class AwtImage extends Frame {
 
     Image img;
 
-    public AwtImage() {
+    public AwtImage(String kuvanNimi) {
         super("Kuva numero tähän-kuvan-nro-pelilaudalla");
         MediaTracker mt = new MediaTracker(this);
-        img = Toolkit.getDefaultToolkit().getImage("tikru.JPG");
+        img = Toolkit.getDefaultToolkit().getImage(kuvanNimi);
         mt.addImage(img, 0);
         setSize(765, 507);
         setVisible(true);
