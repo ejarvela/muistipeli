@@ -1,5 +1,5 @@
 
-package muistipeli;
+package tiedostojenKasittely;
 
 import java.io.File;
 import java.util.ArrayList;

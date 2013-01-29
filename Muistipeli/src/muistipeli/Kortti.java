@@ -1,6 +1,8 @@
 
 package muistipeli;
 
+import tiedostojenKasittely.KuvanAvaus;
+
 
 public class Kortti {
     
@@ -21,9 +23,9 @@ public class Kortti {
        this.kortinNro = nro;
    }
     
-   public void nostaKortti(String kuvanNimi) throws Exception{
+   public void nostaKortti() throws Exception{
        //nosta kortti
-       AwtImage kuva = new AwtImage(this.nimi);
+       KuvanAvaus kuva = new KuvanAvaus(this.nimi);
        
    }
    public int getKortinNro(){

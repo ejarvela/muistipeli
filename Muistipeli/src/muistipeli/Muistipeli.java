@@ -1,5 +1,6 @@
 package muistipeli;
 
+import tiedostojenKasittely.TiedostonLukija;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -64,14 +65,16 @@ public class Muistipeli {
         System.out.println("");
         System.out.println("Peli alkaa.");
 
-       Kortti kortti1 = new Kortti("lumi");
+   //    Kortti kortti1 = new Kortti("lumi.JPG");
+   //    kortti1.nostaKortti();
 
     }
 
     public void luoKortit(Integer vaikeus) throws Exception {
 
-        ArrayList<String> kuvat = new ArrayList<String>();
+        ArrayList<String> kuvienNimet = new ArrayList<String>();
         HashSet<Integer> kuvienNumerot = new HashSet<Integer>();
+        ArrayList<Integer> kuvienNumerotListassa = new ArrayList<Integer>();
         Random rand = new Random();
         
         int korttienMaara;
@@ -106,26 +109,27 @@ public class Muistipeli {
                 kuvienNumerot.add(e);
             }
         }
-        System.out.println("Ten Unique random numbers from 1 to 20 are  : " + kuvienNumerot);
         
-
+         // muuttaa Set -> List
+         kuvienNumerotListassa.addAll(kuvienNumerot);
+    
         //lukee kuvien nimet tiedostosta
         
         File tiedosto = new File("src/muistipeli/kuvat.txt");
 
         TiedostonLukija fileReader = new TiedostonLukija(tiedosto);
-        kuvat = fileReader.haeKuvat();
+        kuvienNimet = fileReader.haeKuvat();
         
         //luo kortit
         
-        
-        
+//        kuvienNimet.get(e)
+//        
 //        for (i=0;i<kuvienNumerot.size();i++){
-//            String kortinNimi = kuvat.get(kuvienNumerot.get)
+//            String kortinNimi = kuvienNimet.get(kuvienNumerot.get(i));
 //            Kortti 
 //        }
-        
-        
+//        
+//        kuvienNumerot.g
 
     }
 }

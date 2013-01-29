@@ -1,13 +1,13 @@
-package muistipeli;
+package tiedostojenKasittely;
 
 import java.awt.*;
 import java.awt.event.*;
 
-public class AwtImage extends Frame {
+public class KuvanAvaus extends Frame {
 
     Image img;
 
-    public AwtImage(String kuvanNimi) {
+    public KuvanAvaus(String kuvanNimi) {
         super("Kuva numero tähän-kuvan-nro-pelilaudalla");
         MediaTracker mt = new MediaTracker(this);
         img = Toolkit.getDefaultToolkit().getImage(kuvanNimi);
