@@ -6,3 +6,4 @@ Tuntikirjanpito:
 22.1.	3h	luokkakaavio, ohjelmoinnin aloitus
 23.1.	6h	ohjelmointia (kuvien näyttö, korttien arpominen), kuvien valinta
 24.1. 	1.5h	pajaohjaus
+29.1.	3h	testien tekoa, uusi luokkakaavio
