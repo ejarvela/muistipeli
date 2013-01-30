@@ -58,8 +58,7 @@ public class Muistipeli {
             vaikeus = Integer.parseInt(lukija.nextLine());
         }
 
-        //luodaan pelattavat kortit
-        
+        //luodaan pelattavat kortit       
         luoKortit(vaikeus);
 
         System.out.println("");
@@ -96,8 +95,7 @@ public class Muistipeli {
         g=korttienMaara;
 
         
-        //arpoo kuvat
-        
+        //arpoo kuvat       
         for (i = 0; i < g; i++) {
             e = rand.nextInt(21);
             kuvienNumerot.add(e);
@@ -110,26 +108,22 @@ public class Muistipeli {
             }
         }
         
-         // muuttaa Set -> List
+        // muuttaa Set -> List
          kuvienNumerotListassa.addAll(kuvienNumerot);
     
-        //lukee kuvien nimet tiedostosta
-        
+        //lukee kuvien nimet tiedostosta        
         File tiedosto = new File("src/muistipeli/kuvat.txt");
 
         TiedostonLukija fileReader = new TiedostonLukija(tiedosto);
         kuvienNimet = fileReader.haeKuvat();
         
-        //luo kortit
-        
-//        kuvienNimet.get(e)
-//        
-//        for (i=0;i<kuvienNumerot.size();i++){
-//            String kortinNimi = kuvienNimet.get(kuvienNumerot.get(i));
-//            Kortti 
+        //luo kortit      
+//        for (i=0;i<kuvienNumerotListassa.size();i++){
+//            String kortinNimi =
+//            Kortti kuvienNimet.get(kuvienNumerotListassa.get(i)) = new Kortti(kuvienNumerotListassa.get(i));
 //        }
-//        
-//        kuvienNumerot.g
+        
+        
 
     }
 }
