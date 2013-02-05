@@ -1,5 +1,6 @@
 package muistipeli;
 
+import logiikka.Pelilauta;
 import tiedostojenKasittely.TiedostonLukija;
 import java.io.File;
 import java.util.ArrayList;
@@ -11,10 +12,12 @@ public class Muistipeli {
 
     private Scanner lukija;
     ArrayList<Pelaaja> pelaajat;
+    Pelilauta peli;
 
     public Muistipeli(Scanner lukija) {
         this.lukija = lukija;
         pelaajat = new ArrayList<Pelaaja>();
+        peli = new Pelilauta();
     }
 
     public void kaynnista() throws Exception {
@@ -57,73 +60,19 @@ public class Muistipeli {
             System.out.println("Valitse vaikeustaso 1, 2, 3 tai 4.");
             vaikeus = Integer.parseInt(lukija.nextLine());
         }
-
-        //luodaan pelattavat kortit       
-        luoKortit(vaikeus);
+        
+        peli.maaritaVaikeus(vaikeus);
+        peli.arvoKuvat(vaikeus);
+        peli.luoKortit();
 
         System.out.println("");
         System.out.println("Peli alkaa.");
-
-   //    Kortti kortti1 = new Kortti("lumi.JPG");
-   //    kortti1.nostaKortti();
-
-    }
-
-    public void luoKortit(Integer vaikeus) throws Exception {
-
-        ArrayList<String> kuvienNimet = new ArrayList<String>();
-        HashSet<Integer> kuvienNumerot = new HashSet<Integer>();
-        ArrayList<Integer> kuvienNumerotListassa = new ArrayList<Integer>();
-        Random rand = new Random();
         
-        int korttienMaara;
-        int randomNumero;
-        int i;
-        int e;
-        int g;
-
-        if (vaikeus == 1) {
-            korttienMaara = 6;
-        } else if (vaikeus == 2) {
-            korttienMaara = 10;
-        } else if (vaikeus == 3) {
-            korttienMaara = 15;
-        } else {
-            korttienMaara = 21;
-        }
-
-        g=korttienMaara;
-
-        
-        //arpoo kuvat       
-        for (i = 0; i < g; i++) {
-            e = rand.nextInt(21);
-            kuvienNumerot.add(e);
-            if (kuvienNumerot.size() <= korttienMaara) {
-                if (kuvienNumerot.size() == korttienMaara) {
-                    g = korttienMaara;
-                }
-                g++;
-                kuvienNumerot.add(e);
-            }
-        }
-        
-        // muuttaa Set -> List
-         kuvienNumerotListassa.addAll(kuvienNumerot);
-    
-        //lukee kuvien nimet tiedostosta        
-        File tiedosto = new File("src/muistipeli/kuvat.txt");
-
-        TiedostonLukija fileReader = new TiedostonLukija(tiedosto);
-        kuvienNimet = fileReader.haeKuvat();
-        
-        //luo kortit      
-//        for (i=0;i<kuvienNumerotListassa.size();i++){
-//            String kortinNimi =
-//            Kortti kuvienNimet.get(kuvienNumerotListassa.get(i)) = new Kortti(kuvienNumerotListassa.get(i));
-//        }
+        peli.asetaKortitPoydalle();
         
         
 
+  //    Kortti kortti1 = new Kortti("lumi.JPG");
+  //     kortti1.nostaKortti();
     }
 }
