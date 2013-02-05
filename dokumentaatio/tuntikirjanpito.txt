@@ -7,3 +7,6 @@ Tuntikirjanpito:
 23.1.	6h	ohjelmointia (kuvien näyttö, korttien arpominen), kuvien valinta
 24.1. 	1.5h	pajaohjaus
 29.1.	3h	testien tekoa, uusi luokkakaavio
+30.1.	1h	pajaohjaus
+5.2.	4.5h	javadocin aloitus, sekvenssikaavioita, koodausta
+
