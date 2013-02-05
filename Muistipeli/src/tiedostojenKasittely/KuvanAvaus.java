@@ -3,6 +3,12 @@ package tiedostojenKasittely;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * Avaa kuvan.
+ * <p>
+ * KuvanAvaus avaa käyttäjän määrittelemässä osoitteessa olevan kuvan erilliseen ikkunaan.
+ * @author emilia
+ */
 public class KuvanAvaus extends Frame {
 
     Image img;

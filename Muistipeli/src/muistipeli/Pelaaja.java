@@ -1,6 +1,12 @@
 
 package muistipeli;
 
+/**
+ * Muistipelin pelaaja.
+ * <p>
+ * Pelaaja sisältää tiedon pelaajan nimestä ja hänen pistetilanteestaan.
+ * @author emilia
+ */
 
 public class Pelaaja {
     
@@ -12,7 +18,7 @@ public class Pelaaja {
        this.pisteet = 0;
    }
    
-    @Override
+   @Override
    public String toString(){
        return this.nimi;
    }

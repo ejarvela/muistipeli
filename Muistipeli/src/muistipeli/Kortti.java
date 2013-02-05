@@ -3,7 +3,12 @@ package muistipeli;
 
 import tiedostojenKasittely.KuvanAvaus;
 
-
+/**
+ * Muistipelin kortti.
+ * <p>
+ * Kortti sisältää tiedon kortin nimestä ja tiedostonimestä sekä kortin numeron pelissä.
+ * @author emilia
+ */
 public class Kortti {
     
    private String nimi;
@@ -18,7 +23,7 @@ public class Kortti {
    public String toString(){
        return this.nimi;
    }
-    
+   
    public void asetaKortinNro(Integer nro){
        this.kortinNro = nro;
    }

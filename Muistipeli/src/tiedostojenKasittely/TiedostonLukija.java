@@ -5,6 +5,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Tiedostonlukija lukee annetun tekstitiedoston.
+ * <p>
+ * Tiedostonlukija lukee annetun tekstitiedoston rivi kerrallaan. Lukija sijoittaa kunkin
+ * rivin tekstin listan alkioon. Lukija palauttaa listan, jonka alkioina ovat tiedostosta
+ * luetut rivit.
+ * 
+ * @author emilia
+ */
 public class TiedostonLukija {
 
     private File tiedosto;

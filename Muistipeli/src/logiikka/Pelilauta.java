@@ -9,15 +9,41 @@ import java.util.Random;
 import muistipeli.Kortti;
 import tiedostojenKasittely.TiedostonLukija;
 
+/**
+ * Luo kussakin pelissä pelattavan pelilaudan.
+ * <p>
+ * Pelilauta arpoo yksittäisessä pelissä käytettävät kortit ja niiden paikat pöydällä.
+ * 
+ * @author emilia
+ */
 public class Pelilauta {
 
+    /**
+     * Kertoo, montaako erilaista kuvakorttia muistipelissa käytetään.
+     */
     int korttienMaara;
+    /**
+     * Sisältää kaikkien muistipelissa käytettävien kuvien nimet.
+     */
     ArrayList<String> kuvienNimet;
+    /**
+     * Sisältää tietyllä muistipelikierroksella käytettävien kuvien numerot.
+     */
     ArrayList<Integer> kuvienNumerotListassa;
+    /**
+     * Sisältää tietyllä muistipelikierroksella käytettävät kuvakortit.
+     */
     ArrayList<Kortti> kortit;
+    /**
+     * Sisältää tiedon siitä, millä paikalla pöydällä mikäkin kuvakortti on.
+     * */
     HashMap<Integer,Kortti> kortitPoydalla;
+    /**
+     * Tiedostonlukija kuvien nimien tekstitiedostosta lukemista varten.
+     */
     TiedostonLukija fileReader;
 
+    
     public Pelilauta() {
     }
 
@@ -37,12 +63,22 @@ public class Pelilauta {
     public void arvoKuvat(Integer vaikeus) throws Exception {
 
         kuvienNumerotListassa = new ArrayList<Integer>();
-        kuvienNumerotListassa = arvoNumerot(korttienMaara);
+        kuvienNumerotListassa = arvoNumerot(korttienMaara, 21);
         
         System.out.println(kuvienNumerotListassa.toString());
     }
     
-    public ArrayList<Integer> arvoNumerot(Integer maara){
+    /**
+     * Metodi arpoo käyttäjän määrittelemän määrän kokonaislukuja
+     * väliltä 0 - käyttäjän määrittelemä yläraja.
+     * 
+     * @param maara Korttien määrä.
+     * @param ylaraja Isoin mahdollinen numero.
+     * 
+     * @return Arvotut numerot listassa.
+     */
+    
+    public ArrayList<Integer> arvoNumerot(Integer maara, Integer ylaraja){
         
         HashSet<Integer> arvotutNumerot = new HashSet<Integer>();
         ArrayList<Integer> arvotutNumerotListassa = new ArrayList<Integer>();
@@ -57,7 +93,7 @@ public class Pelilauta {
 
         //arpoo kuvat       
         for (i = 0; i < g; i++) {
-            e = rand.nextInt(21);
+            e = rand.nextInt(ylaraja);
             arvotutNumerot.add(e);
             if (arvotutNumerot.size() <= maara) {
                 if (arvotutNumerot.size() == maara) {
@@ -102,6 +138,7 @@ public class Pelilauta {
 
     }
     
+
     public void asetaKortitPoydalle(){
         
         ArrayList<Integer> korttienNumerotPoydalla = new ArrayList<Integer>();
@@ -111,12 +148,7 @@ public class Pelilauta {
             korttienNumerotPoydalla.add(i);
         }
         
-        System.out.println(korttienNumerotPoydalla.toString());
-        
-        Collections.shuffle(korttienNumerotPoydalla);
-        
-        System.out.println(korttienNumerotPoydalla.toString());
-        
+        Collections.shuffle(korttienNumerotPoydalla);  
         
         int korttiNro = 0;
         int kuvaNro = 0;
@@ -129,8 +161,9 @@ public class Pelilauta {
         kuvaNro++;
         
         }
+    }
+    
+    public void tulostaPelilauta(){
         
-        System.out.println(kortitPoydalla.toString());
-        System.out.println(kortitPoydalla.keySet());
     }
 }

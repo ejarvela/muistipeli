@@ -1,13 +1,16 @@
 package muistipeli;
 
-import logiikka.Pelilauta;
-import tiedostojenKasittely.TiedostonLukija;
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
 import java.util.Scanner;
+import logiikka.Pelilauta;
 
+/**
+ * Muistipelin käyttöliittymä.
+ * <p>
+ * Sisältää muistipelin tekstipohjaisen käyttöliittymän.
+ * 
+ * @author emilia
+ */
 public class Muistipeli {
 
     private Scanner lukija;

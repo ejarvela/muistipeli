@@ -3,6 +3,10 @@ package muistipeli;
 
 import java.util.Scanner;
 
+/**
+ * Käynnistää muistipelin.
+ * @author emilia
+ */
 public class Main {
 
 

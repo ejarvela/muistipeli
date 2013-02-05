@@ -1,4 +1,4 @@
-package MuistipeliTestit;
+package MuistipeliTestit.muistipeliTestit;
 
 
 import muistipeli.Pelaaja;
