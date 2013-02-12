@@ -43,11 +43,17 @@ public class Pelilauta {
      * Tiedostonlukija kuvien nimien tekstitiedostosta lukemista varten.
      */
     TiedostonLukija fileReader;
-    
+    /**
+     * Pitää kirjaa pelilaudan numeroista ja siitä onko tietty kortti jo nostettu pöydältä.
+     */
     ArrayList<Integer> pelilaudanNumerot;
-    
+   /**
+    * Kertoo tällä hetkellä käynnissä olevan pelin vaikeustason.
+    */
     Integer vaikeus;
-    
+    /**
+     * Lista pelaajista.
+     */
     ArrayList<Pelaaja> pelaajat;
 
      public Pelilauta() {
@@ -57,8 +63,13 @@ public class Pelilauta {
     public Pelilauta(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
     }
-
-    public void maaritaVaikeus(Integer vaikeus) {
+/**
+ * Määrittää pelissä tarvittavien korttien määrän.
+ *
+ * @param vaikeus Pelin vaikeustaso.
+ *
+ */
+    public void maaritaKorttienMaara(Integer vaikeus) {
         
         this.vaikeus = vaikeus;
 
@@ -78,6 +89,13 @@ public class Pelilauta {
     public int getKorttienMaara() {
         return korttienMaara;
     }
+
+    /**
+     * Arpoo pelissä käytettävien kuvien numerot listaan.
+     *
+     * @param vaikeus Pelin vaikeustaso.
+     * @throws Exception
+     */
 
     public void arvoKuvat(Integer vaikeus) throws Exception {
 
@@ -133,9 +151,14 @@ public class Pelilauta {
         }
     }
 
+    /**
+     * Lukee kuvatiedostojen nimet tekstitiedostosta ja luo pelissä tarvittavat kortit.
+     *
+     * @throws Exception
+     */
+
     public void luoKortit() throws Exception {
 
-        //lukee kuvien nimet tiedostosta        
         File tiedosto = new File("src/muistipeli/kuvat.txt");
         kortit = new ArrayList<Kortti>();
         fileReader = new TiedostonLukija(tiedosto);
@@ -144,7 +167,6 @@ public class Pelilauta {
         String kortinNimi;
         String kortinNimi2;
 
-        //luo kortit      
         for (int i = 0; i < kuvienNumerotListassa.size(); i++) {
             int a = kuvienNumerotListassa.get(i);
             kortinNimi = kuvienNimet.get(a);
@@ -153,11 +175,14 @@ public class Pelilauta {
             kortit.add(KortinNimi);
 
         }
-
-        //   System.out.println(kortit.toString());
-
     }
 
+
+    /**
+     * Arpoo korteille paikat pöydällä.
+     *
+     * @return HashMap, numero-kuva -pareista.
+     */
     public HashMap<Integer, Kortti> asetaKortitPoydalle() {
 
         ArrayList<Integer> korttienNumerotPoydalla = new ArrayList<Integer>();
@@ -183,6 +208,10 @@ public class Pelilauta {
         
         return kortitPoydalla;
     }
+
+    /**
+     * Tulostaa pelilaudan senhetkisen tilanteen.
+     */
 
     public void tulostaPelilauta() {
         

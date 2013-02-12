@@ -26,7 +26,7 @@ public class PelilautaTest {
 
     @Test
     public void maarittaaKorttimaaranOikein() {
-        lauta.maaritaVaikeus(3);
+        lauta.maaritaKorttienMaara(3);
         assertEquals(15, lauta.getKorttienMaara());
 
     }
@@ -34,7 +34,7 @@ public class PelilautaTest {
     @Test
     public void toimiiOikeinJosAnnettuaVaikeustasoaEiOle() {
         
-       lauta.maaritaVaikeus(5);
+       lauta.maaritaKorttienMaara(5);
        assertEquals(0,lauta.getKorttienMaara());
 
     }
@@ -42,7 +42,7 @@ public class PelilautaTest {
      @Test
     public void toimiiOikeinJosAnnettuVaikeustasoaNegatiivinen() {
         
-       lauta.maaritaVaikeus(-5);
+       lauta.maaritaKorttienMaara(-5);
        assertEquals(0,lauta.getKorttienMaara());
 
     }

@@ -27,6 +27,11 @@ public class Muistipeli {
         pelilauta = new Pelilauta(pelaajat);
     }
 
+    /**
+     * Käynnistää Muistipelin.
+     *
+     * @throws Exception
+     */
     public void kaynnista() throws Exception {
         
         System.out.println("Tervetuloa Muistipeliin!");
@@ -68,7 +73,7 @@ public class Muistipeli {
             vaikeus = Integer.parseInt(lukija.nextLine());
         }
         
-        pelilauta.maaritaVaikeus(vaikeus);
+        pelilauta.maaritaKorttienMaara(vaikeus);
         
         pelilauta.arvoKuvat(vaikeus);
         pelilauta.luoKortit();
@@ -82,12 +87,5 @@ public class Muistipeli {
         kierroksenLogiikka kierros = new kierroksenLogiikka(pelilauta, pelaajat, lukija, kortitPoydalla);
         kierros.tulostaPelaajienPistetilanne();
         kierros.pelaa();
-        
-        
- 
-        
-
-  //    Kortti kortti1 = new Kortti("lumi.JPG");
-  //     kortti1.nostaKortti();
     }
 }

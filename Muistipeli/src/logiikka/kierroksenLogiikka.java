@@ -12,6 +12,9 @@ import muistipeli.Pelaaja;
 import tiedostojenKasittely.KuvanAvaus;
 
 /**
+ * Sovelluksen logiikka.
+ * <p>
+ * Pelin logiikka. Nostaa kortit, tarkistaa ovatko kuvat samat, lisää pisteet, jakaa vuorot.
  *
  * @author emilia
  */
@@ -30,7 +33,12 @@ public class kierroksenLogiikka {
         this.lukija = lukija;
         this.kortitPoydalla = kortitPoydalla;
     }
-    
+
+    /**
+     * Käynnistää varsinaisen pelin.
+     *
+     * @throws Exception
+     */
     public void pelaa() throws Exception{
         pelilauta.tulostaPelilauta();
         System.out.println("Anna nostettavien korttien numerot yksi kerrallaan.");
@@ -39,8 +47,13 @@ public class kierroksenLogiikka {
         kortitPoydalla.get(ekaNostettavaKortti).nostaKortti(100,200,ekaNostettavaKortti);
         kortitPoydalla.get(tokaNostettavaKortti).nostaKortti(1000,200,tokaNostettavaKortti);       
     }
-    
+
+    /**
+     * Tulostaa pelin senhetkisen pistetilanteen.
+     */
     public void tulostaPelaajienPistetilanne(){
-    System.out.println(pelaajat.toString());
+
+       for(int i = 0; i < pelaajat.size();i++)
+        System.out.println(pelaajat.get(i).getPisteet());
     }
 }

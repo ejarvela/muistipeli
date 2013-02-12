@@ -24,6 +24,12 @@ public class TiedostonLukija {
         this.kuvalista = new ArrayList<String>();
     }
 
+    /**
+     * Lukee kuvien tiedostonimet tekstitiedostosta ja pistää ne listaan.
+     *
+     * @return Lista kuvien tiedostonimistä.
+     * @throws Exception
+     */
     public ArrayList haeKuvat() throws Exception {
         Scanner lukija = new Scanner(this.tiedosto);
         int i = 0;

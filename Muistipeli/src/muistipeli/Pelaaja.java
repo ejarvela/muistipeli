@@ -22,7 +22,10 @@ public class Pelaaja {
    public String toString(){
        return this.nimi;
    }
-    
+
+   /**
+    * Lisää pisteen pelaajalle.
+    */
    public void lisaaPiste(){
        pisteet++;
    }

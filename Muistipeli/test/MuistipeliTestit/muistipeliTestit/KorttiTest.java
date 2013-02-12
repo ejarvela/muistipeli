@@ -22,9 +22,5 @@ public class KorttiTest {
         assertEquals("kissa",kortti1.toString());
     }
     
-    @Test
-    public void asettaaKortinNronOikein(){
-        kortti1.asetaKortinNro(3);
-        assertEquals(3,kortti1.getKortinNro());
-    }
+    
 }
