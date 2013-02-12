@@ -28,9 +28,10 @@ public class Kortti {
        this.kortinNro = nro;
    }
     
-   public void nostaKortti() throws Exception{
+   public void nostaKortti(Integer x, Integer y, Integer kuvaNro) throws Exception{
        //nosta kortti
        KuvanAvaus kuva = new KuvanAvaus(this.nimi);
+       kuva.kuvanPiirto(x,y, kuvaNro);
        
    }
    public int getKortinNro(){

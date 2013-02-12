@@ -7,13 +7,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 import muistipeli.Kortti;
+import muistipeli.Pelaaja;
 import tiedostojenKasittely.TiedostonLukija;
 
 /**
- * Luo kussakin pelissä pelattavan pelilaudan.
- * <p>
- * Pelilauta arpoo yksittäisessä pelissä käytettävät kortit ja niiden paikat pöydällä.
- * 
+ * Luo kussakin pelissä pelattavan pelilaudan. <p> Pelilauta arpoo yksittäisessä
+ * pelissä käytettävät kortit ja niiden paikat pöydällä.
+ *
  * @author emilia
  */
 public class Pelilauta {
@@ -36,18 +36,31 @@ public class Pelilauta {
     ArrayList<Kortti> kortit;
     /**
      * Sisältää tiedon siitä, millä paikalla pöydällä mikäkin kuvakortti on.
-     * */
-    HashMap<Integer,Kortti> kortitPoydalla;
+     *
+     */
+    HashMap<Integer, Kortti> kortitPoydalla;
     /**
      * Tiedostonlukija kuvien nimien tekstitiedostosta lukemista varten.
      */
     TiedostonLukija fileReader;
-
     
-    public Pelilauta() {
+    ArrayList<Integer> pelilaudanNumerot;
+    
+    Integer vaikeus;
+    
+    ArrayList<Pelaaja> pelaajat;
+
+     public Pelilauta() {
+       
+    }
+    
+    public Pelilauta(ArrayList<Pelaaja> pelaajat) {
+        this.pelaajat = pelaajat;
     }
 
     public void maaritaVaikeus(Integer vaikeus) {
+        
+        this.vaikeus = vaikeus;
 
         if (vaikeus == 1) {
             korttienMaara = 6;
@@ -55,63 +68,70 @@ public class Pelilauta {
             korttienMaara = 10;
         } else if (vaikeus == 3) {
             korttienMaara = 15;
-        } else {
+        } else if (vaikeus == 4) {
             korttienMaara = 21;
+        } else {
+            korttienMaara = 0;
         }
+    }
+
+    public int getKorttienMaara() {
+        return korttienMaara;
     }
 
     public void arvoKuvat(Integer vaikeus) throws Exception {
 
         kuvienNumerotListassa = new ArrayList<Integer>();
         kuvienNumerotListassa = arvoNumerot(korttienMaara, 21);
-        
+
         System.out.println(kuvienNumerotListassa.toString());
     }
-    
+
     /**
-     * Metodi arpoo käyttäjän määrittelemän määrän kokonaislukuja
-     * väliltä 0 - käyttäjän määrittelemä yläraja.
-     * 
+     * Metodi arpoo käyttäjän määrittelemän määrän kokonaislukuja väliltä 0 -
+     * käyttäjän määrittelemä yläraja.
+     *
      * @param maara Korttien määrä.
      * @param ylaraja Isoin mahdollinen numero.
-     * 
+     *
      * @return Arvotut numerot listassa.
      */
-    
-    public ArrayList<Integer> arvoNumerot(Integer maara, Integer ylaraja){
-        
+    public ArrayList<Integer> arvoNumerot(Integer maara, Integer ylaraja) {
+
         HashSet<Integer> arvotutNumerot = new HashSet<Integer>();
         ArrayList<Integer> arvotutNumerotListassa = new ArrayList<Integer>();
         Random rand = new Random();
+        
+        if (maara < 0 || ylaraja < 0 || maara > ylaraja) {
+            System.out.println("Määrän ja ylärajan täytyy olla positiivisia lukuja ja ylärajan täytyy olla isompi kuin määrän.");
+            return arvotutNumerotListassa;
+        } else {
+            int randomNumero;
+            int i;
+            int e;
+            int g;
 
-        int randomNumero;
-        int i;
-        int e;
-        int g;
+            g = maara;
 
-        g = maara;
-
-        //arpoo kuvat       
-        for (i = 0; i < g; i++) {
-            e = rand.nextInt(ylaraja);
-            arvotutNumerot.add(e);
-            if (arvotutNumerot.size() <= maara) {
-                if (arvotutNumerot.size() == maara) {
-                    g = maara;
-                }
-                g++;
+            //arpoo kuvat       
+            for (i = 0; i < g; i++) {
+                e = rand.nextInt(ylaraja);
                 arvotutNumerot.add(e);
+                if (arvotutNumerot.size() <= maara) {
+                    if (arvotutNumerot.size() == maara) {
+                        g = maara;
+                    }
+                    g++;
+                    arvotutNumerot.add(e);
+                }
             }
+
+            // muuttaa Set -> List
+            arvotutNumerotListassa.addAll(arvotutNumerot);
+
+            return arvotutNumerotListassa;
         }
-
-        // muuttaa Set -> List
-        arvotutNumerotListassa.addAll(arvotutNumerot);
-        
-        return arvotutNumerotListassa;
     }
-        
-    
-
 
     public void luoKortit() throws Exception {
 
@@ -137,33 +157,50 @@ public class Pelilauta {
         //   System.out.println(kortit.toString());
 
     }
-    
 
-    public void asetaKortitPoydalle(){
-        
+    public HashMap<Integer, Kortti> asetaKortitPoydalle() {
+
         ArrayList<Integer> korttienNumerotPoydalla = new ArrayList<Integer>();
         kortitPoydalla = new HashMap<Integer, Kortti>();
-        
-        for(int i = 0; i < korttienMaara*2;i++){
+
+        for (int i = 0; i < korttienMaara * 2; i++) {
             korttienNumerotPoydalla.add(i);
         }
-        
-        Collections.shuffle(korttienNumerotPoydalla);  
-        
+
+        Collections.shuffle(korttienNumerotPoydalla);
+
         int korttiNro = 0;
         int kuvaNro = 0;
-        
-        while(korttiNro<korttienMaara*2){
-        kortitPoydalla.put(korttienNumerotPoydalla.get(korttiNro), kortit.get(kuvaNro));
-        korttiNro++;
-        kortitPoydalla.put(korttienNumerotPoydalla.get(korttiNro), kortit.get(kuvaNro));
-        korttiNro++;
-        kuvaNro++;
-        
+
+        while (korttiNro < korttienMaara * 2) {
+            kortitPoydalla.put(korttienNumerotPoydalla.get(korttiNro), kortit.get(kuvaNro));
+            korttiNro++;
+            kortitPoydalla.put(korttienNumerotPoydalla.get(korttiNro), kortit.get(kuvaNro));
+            korttiNro++;
+            kuvaNro++;
+
         }
-    }
-    
-    public void tulostaPelilauta(){
         
+        return kortitPoydalla;
+    }
+
+    public void tulostaPelilauta() {
+        
+        pelilaudanNumerot = new ArrayList<Integer>();
+        
+        for (int i = 1; i < korttienMaara * 2+1; i++) {
+            pelilaudanNumerot.add(i);
+        }
+        
+        for(int i = 0; i < korttienMaara*2;i++){
+            if (i<9){
+            System.out.print(" " + pelilaudanNumerot.get(i) + "  ");
+            } else {
+                System.out.print(pelilaudanNumerot.get(i) + "  ");
+            }
+                    if((i+1)%(vaikeus+2)==0){
+                        System.out.println("");      
+                    }
+        }
     }
 }

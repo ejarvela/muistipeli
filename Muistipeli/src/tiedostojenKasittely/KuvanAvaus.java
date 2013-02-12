@@ -1,45 +1,42 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package tiedostojenKasittely;
 
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
+import javax.swing.JFrame;
 
-/**
- * Avaa kuvan.
- * <p>
- * KuvanAvaus avaa käyttäjän määrittelemässä osoitteessa olevan kuvan erilliseen ikkunaan.
- * @author emilia
- */
-public class KuvanAvaus extends Frame {
+public class KuvanAvaus extends Panel {
 
-    Image img;
+    BufferedImage img;
+    String kuvanNimi;
 
     public KuvanAvaus(String kuvanNimi) {
-        super("Kuva numero tähän-kuvan-nro-pelilaudalla");
-        MediaTracker mt = new MediaTracker(this);
-        img = Toolkit.getDefaultToolkit().getImage(kuvanNimi);
-        mt.addImage(img, 0);
-        setSize(765, 507);
-        setVisible(true);
-        addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent we) {
-                dispose();
+            
+            this.kuvanNimi = kuvanNimi;
+        
+            img = null;
+            try {
+                img = ImageIO.read(new File(kuvanNimi));
+            } catch (IOException e) {
             }
-        });
-    }
-
-    @Override
-    public void update(Graphics g) {
-        paint(g);
     }
 
     @Override
     public void paint(Graphics g) {
-        if (img != null) {
+        g.drawImage(img, 0, 0, null);
+    }
 
-            g.drawImage(img, 0, 0, this);
-        } else {
-            g.clearRect(0, 0, getSize().width, getSize().height);
-        }
+    public void kuvanPiirto(Integer x, Integer y, Integer kuvaNro) {
+        JFrame frame = new JFrame("Kuva numero " + kuvaNro);
+        Panel panel = new KuvanAvaus(kuvanNimi);
+        frame.getContentPane().add(panel);
+        frame.setSize(765, 507);
+        frame.setLocation(x,y);
+        frame.setVisible(true);
     }
 }

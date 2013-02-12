@@ -1,8 +1,11 @@
 package muistipeli;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import logiikka.Pelilauta;
+import logiikka.kierroksenLogiikka;
+import tiedostojenKasittely.KuvanAvaus;
 
 /**
  * Muistipelin käyttöliittymä.
@@ -15,12 +18,13 @@ public class Muistipeli {
 
     private Scanner lukija;
     ArrayList<Pelaaja> pelaajat;
-    Pelilauta peli;
+    Pelilauta pelilauta;
+    HashMap<Integer, Kortti> kortitPoydalla;
 
     public Muistipeli(Scanner lukija) {
         this.lukija = lukija;
         pelaajat = new ArrayList<Pelaaja>();
-        peli = new Pelilauta();
+        pelilauta = new Pelilauta(pelaajat);
     }
 
     public void kaynnista() throws Exception {
@@ -64,15 +68,23 @@ public class Muistipeli {
             vaikeus = Integer.parseInt(lukija.nextLine());
         }
         
-        peli.maaritaVaikeus(vaikeus);
-        peli.arvoKuvat(vaikeus);
-        peli.luoKortit();
+        pelilauta.maaritaVaikeus(vaikeus);
+        
+        pelilauta.arvoKuvat(vaikeus);
+        pelilauta.luoKortit();
 
         System.out.println("");
         System.out.println("Peli alkaa.");
+        System.out.println("");
         
-        peli.asetaKortitPoydalle();
+        kortitPoydalla = pelilauta.asetaKortitPoydalle();
         
+        kierroksenLogiikka kierros = new kierroksenLogiikka(pelilauta, pelaajat, lukija, kortitPoydalla);
+        kierros.tulostaPelaajienPistetilanne();
+        kierros.pelaa();
+        
+        
+ 
         
 
   //    Kortti kortti1 = new Kortti("lumi.JPG");
