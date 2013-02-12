@@ -1,6 +1,6 @@
 Aihe: Muistipeli
 
-Toteutetaan graafisen käyttöliittymän avulla muistipeli.
+Toteutetaan tekstipohjaisen käyttöliittymän avulla muistipeli.
 
 Muistipelissä pelaajan on tarkoituksena saada kerättyä mahdollisimman monta kuvaparia mahdollisimman 
 vähillä vuoroilla. Tarkempi selostus löytyy Wikipediasta: http://fi.wikipedia.org/wiki/Muistipeli.

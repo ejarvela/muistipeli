@@ -9,4 +9,6 @@ Tuntikirjanpito:
 29.1.	3h	testien tekoa, uusi luokkakaavio
 30.1.	1h	pajaohjaus
 5.2.	4.5h	javadocin aloitus, sekvenssikaavioita, koodausta
+11.2.	1h	pajaohjaus
+12.2.	5h	javadoc, sovelluslogiikka, sekvenssikaavioita
 
