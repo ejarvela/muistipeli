@@ -17,7 +17,13 @@ import javax.swing.JFrame;
  */
 public class KuvanAvaus extends Panel {
 
+    /**
+     * Avattava kuva.
+     */
     BufferedImage img;
+    /**
+     * Avattavan kuvan tiedostonimi.
+     */
     String kuvanNimi;
 
 

@@ -16,9 +16,21 @@ import tiedostojenKasittely.KuvanAvaus;
  */
 public class Muistipeli {
 
+    /**
+     * Lukija.
+     */
     private Scanner lukija;
+    /**
+     * Lista pelaajista.
+     */
     ArrayList<Pelaaja> pelaajat;
+    /**
+     * Pelattava pelilauta.
+     */
     Pelilauta pelilauta;
+    /**
+     * Korttien sijainnit pöydällä.
+     */
     HashMap<Integer, Kortti> kortitPoydalla;
 
     public Muistipeli(Scanner lukija) {

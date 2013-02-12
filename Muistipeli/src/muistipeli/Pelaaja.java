@@ -9,8 +9,14 @@ package muistipeli;
  */
 
 public class Pelaaja {
-    
+
+   /**
+    * Pelaajan nimi.
+    */
    private String nimi;
+   /**
+    * Pelaajan pisteet.
+    */
    private int pisteet;
    
    public Pelaaja (String nimi){

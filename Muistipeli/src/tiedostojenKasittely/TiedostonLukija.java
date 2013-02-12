@@ -16,7 +16,13 @@ import java.util.Scanner;
  */
 public class TiedostonLukija {
 
+    /**
+     * Luettava tiedosto.
+     */
     private File tiedosto;
+    /**
+     * Lista kuvien tiedostonimistä.
+     */
     private ArrayList<String> kuvalista;
 
     public TiedostonLukija(File tiedosto) throws Exception {

@@ -19,12 +19,30 @@ import tiedostojenKasittely.KuvanAvaus;
  * @author emilia
  */
 public class kierroksenLogiikka {
-    
+
+    /**
+     * Pelattava pelilauta.
+     */
     Pelilauta pelilauta;
+    /**
+     * Lista pelaajista.
+     */
     ArrayList<Pelaaja> pelaajat;
+    /**
+     * Lukija.
+     */
     Scanner lukija;
+    /**
+     * Ensimmäinen vuorolla käännettävistä korteista.
+     */
     Integer ekaNostettavaKortti;
+    /**
+     * Toinen vuorolla käännettävistä korteista.
+     */
     Integer tokaNostettavaKortti;
+    /**
+     * Korttien sijainnit pöydällä.
+     */
     HashMap<Integer, Kortti> kortitPoydalla;
     
     public kierroksenLogiikka(Pelilauta pelilauta, ArrayList<Pelaaja> pelaajat, Scanner lukija, HashMap<Integer, Kortti> kortitPoydalla){
@@ -35,7 +53,7 @@ public class kierroksenLogiikka {
     }
 
     /**
-     * Käynnistää varsinaisen pelin.
+     * Käynnistää varsinaiset pelikierrokset.
      *
      * @throws Exception
      */

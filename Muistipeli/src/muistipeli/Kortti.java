@@ -10,9 +10,11 @@ import tiedostojenKasittely.KuvanAvaus;
  * @author emilia
  */
 public class Kortti {
-    
+
+    /**
+     * Kortin nimi.
+     */
    private String nimi;
-   private String tiedostonimi;
    
    public Kortti (String nimi){
        this.nimi = nimi;
