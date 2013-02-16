@@ -15,6 +15,10 @@ public class Kortti {
      * Kortin nimi.
      */
    private String nimi;
+   /**
+    * Kuvan avaus;
+    */
+   KuvanAvaus kuva;
    
    public Kortti (String nimi){
        this.nimi = nimi;
@@ -33,9 +37,16 @@ public class Kortti {
      * @throws Exception
      */
    public void nostaKortti(Integer x, Integer y, Integer kuvaNro) throws Exception{
-       //nosta kortti
-       KuvanAvaus kuva = new KuvanAvaus(this.nimi);
+       
+       kuva = new KuvanAvaus(this.nimi);
        kuva.kuvanPiirto(x,y, kuvaNro);
+   }
+   
+   /**
+    * Sulkee kortin.
+    */
+   public void kaannaKorttiTakaisin(){
+       kuva.suljeKuva();
    }
   
 }

@@ -11,4 +11,5 @@ Tuntikirjanpito:
 5.2.	4.5h	javadocin aloitus, sekvenssikaavioita, koodausta
 11.2.	1h	pajaohjaus
 12.2.	5h	javadoc, sovelluslogiikka, sekvenssikaavioita
+15.2.	2.5h	koodausta
 

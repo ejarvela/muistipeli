@@ -25,7 +25,10 @@ public class KuvanAvaus extends Panel {
      * Avattavan kuvan tiedostonimi.
      */
     String kuvanNimi;
-
+    /**
+     * Ikkuna, johon kuva avataan.
+     */
+    JFrame frame;
 
     /**
      * Lataa avattavan kuvan nimen perusteella.
@@ -57,11 +60,18 @@ public class KuvanAvaus extends Panel {
      */
 
     public void kuvanPiirto(Integer x, Integer y, Integer kuvaNro) {
-        JFrame frame = new JFrame("Kuva numero " + kuvaNro);
+        frame = new JFrame("Kuva numero " + (kuvaNro+1));
         Panel panel = new KuvanAvaus(kuvanNimi);
         frame.getContentPane().add(panel);
         frame.setSize(765, 507);
         frame.setLocation(x,y);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setAlwaysOnTop(true);
         frame.setVisible(true);
+        
+    }
+    
+    public void suljeKuva(){
+        frame.dispose();
     }
 }

@@ -29,6 +29,10 @@ public class Muistipeli {
      */
     Pelilauta pelilauta;
     /**
+     * Pelilaudan numerot.
+     */
+    ArrayList<Integer> pelilaudanNumerot;
+    /**
      * Korttien sijainnit pöydällä.
      */
     HashMap<Integer, Kortti> kortitPoydalla;
@@ -37,6 +41,7 @@ public class Muistipeli {
         this.lukija = lukija;
         pelaajat = new ArrayList<Pelaaja>();
         pelilauta = new Pelilauta(pelaajat);
+        pelilaudanNumerot = new ArrayList<Integer>();
     }
 
     /**
@@ -96,7 +101,10 @@ public class Muistipeli {
         
         kortitPoydalla = pelilauta.asetaKortitPoydalle();
         
-        kierroksenLogiikka kierros = new kierroksenLogiikka(pelilauta, pelaajat, lukija, kortitPoydalla);
+        pelilauta.teePelilaudanNumerot();
+        pelilaudanNumerot = pelilauta.getPelilaudanNumerot();
+        
+        kierroksenLogiikka kierros = new kierroksenLogiikka(pelilauta, pelaajat, lukija, kortitPoydalla, pelilaudanNumerot);
         kierros.tulostaPelaajienPistetilanne();
         kierros.pelaa();
     }

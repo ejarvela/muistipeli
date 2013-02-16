@@ -213,13 +213,7 @@ public class Pelilauta {
      * Tulostaa pelilaudan senhetkisen tilanteen.
      */
 
-    public void tulostaPelilauta() {
-        
-        pelilaudanNumerot = new ArrayList<Integer>();
-        
-        for (int i = 1; i < korttienMaara * 2+1; i++) {
-            pelilaudanNumerot.add(i);
-        }
+    public void tulostaPelilauta() {      
         
         for(int i = 0; i < korttienMaara*2;i++){
             if (i<9){
@@ -231,5 +225,25 @@ public class Pelilauta {
                         System.out.println("");      
                     }
         }
+    }
+    
+    public ArrayList<Integer> getPelilaudanNumerot(){
+        return pelilaudanNumerot;
+    }
+    
+    
+    /**
+     * Tekee listan pelilaudan numeroista.
+     * @return Pelilaudan numerot.
+     */
+    public ArrayList<Integer> teePelilaudanNumerot(){
+        
+        pelilaudanNumerot = new ArrayList<Integer>();
+        
+        for (int i = 1; i < korttienMaara * 2+1; i++) {
+            pelilaudanNumerot.add(i);
+        }
+        
+        return pelilaudanNumerot;
     }
 }
