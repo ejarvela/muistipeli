@@ -128,6 +128,8 @@ public class kierroksenLogiikka {
             System.out.println(ekaNostettavaKortti + " " + tokaNostettavaKortti);
             kortitPoydalla.get(ekaNostettavaKortti-1).kaannaKorttiTakaisin();
             kortitPoydalla.get(tokaNostettavaKortti-1).kaannaKorttiTakaisin();
+           
+            
 
         }
         
