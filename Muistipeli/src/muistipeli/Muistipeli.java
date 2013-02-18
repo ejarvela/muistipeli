@@ -105,7 +105,7 @@ public class Muistipeli {
         pelilaudanNumerot = pelilauta.getPelilaudanNumerot();
         
         kierroksenLogiikka kierros = new kierroksenLogiikka(pelilauta, pelaajat, lukija, kortitPoydalla, pelilaudanNumerot);
-        kierros.tulostaPelaajienPistetilanne();
+        kierros.tulostaPelaajienPistetilanne("pelissa");
         kierros.pelaa();
     }
 }

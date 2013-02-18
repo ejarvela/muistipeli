@@ -52,7 +52,15 @@ public class kierroksenLogiikka {
      * Pelilaudan numerot.
      */
     ArrayList<Integer> pelilaudanNumerot;
-
+    /**
+     * Pitää kirjaa siitä, montako kierrosta on pelattu.
+     */
+    public int kierrosLaskuri;
+    /**
+     * Pitää kirjaa siitä, montako nostoa (korttipari) on suoritettu.
+     */
+    public int nostoLaskuri;
+    
     public kierroksenLogiikka(Pelilauta pelilauta, ArrayList<Pelaaja> pelaajat, Scanner lukija, HashMap<Integer, Kortti> kortitPoydalla, ArrayList<Integer> pelilaudanNumerot) {
         this.pelilauta = pelilauta;
         this.pelaajat = pelaajat;
@@ -70,9 +78,12 @@ public class kierroksenLogiikka {
 
         String vastaus;
         int pelaajaJonkaVuoroOn = 0;
-
+        kierrosLaskuri = 0;
+        nostoLaskuri = 0;
+        
         jaljellaOlevienKorttienMaara = pelilauta.getKorttienMaara();
 
+        
         while (jaljellaOlevienKorttienMaara > 0) {
 
             pelilauta.tulostaPelilauta();
@@ -103,6 +114,7 @@ public class kierroksenLogiikka {
                 System.out.println("Samat kortit! Saat uuden vuoron.");
                 pelaajat.get(pelaajaJonkaVuoroOn).lisaaPiste();
                 jaljellaOlevienKorttienMaara--;
+                nostoLaskuri++;
                 
                 pelilaudanNumerot.set(ekaNostettavaKortti-1, 0);
                 pelilaudanNumerot.set(tokaNostettavaKortti-1, 0);
@@ -112,12 +124,14 @@ public class kierroksenLogiikka {
                 System.out.println("Eri kortit!");
                 System.out.println("");
                 pelaajaJonkaVuoroOn++;
+                nostoLaskuri++;
 
                 if (pelaajaJonkaVuoroOn > pelaajat.size() - 1) {
                     pelaajaJonkaVuoroOn = 0;
+                    kierrosLaskuri++;
                 }
 
-                tulostaPelaajienPistetilanne();
+                tulostaPelaajienPistetilanne("pelissa");
                 System.out.println(" ");
             }
 
@@ -136,22 +150,31 @@ public class kierroksenLogiikka {
         String voittaja = kukaVoitti();
         
         System.out.println("Peli loppui! Lopullinen pistetilanne:");
-        tulostaPelaajienPistetilanne();
+        tulostaPelaajienPistetilanne("lopussa");
         System.out.println(" ");
         
         System.out.println("Pelin voitti " + voittaja);
+        System.out.println("Pelattiin yhteensä " + kierrosLaskuri + " kierrosta ja " + nostoLaskuri + " nostokertaa.");
     }
 
     /**
      * Tulostaa pelin senhetkisen pistetilanteen.
      */
-    public void tulostaPelaajienPistetilanne() {
+    public void tulostaPelaajienPistetilanne(String milloin) {
 
-        System.out.println("Pelaajien pistetilanne tällä hetkellä:");
-        for (int i = 0; i < pelaajat.size(); i++) {
-            System.out.println(pelaajat.get(i).toString() + " " + pelaajat.get(i).getPisteet() + " pistettä.");
+   
+        if (milloin.equals("pelissa")) {
+            System.out.println("Pelaajien pistetilanne tällä hetkellä:");
+            for (int i = 0; i < pelaajat.size(); i++) {
+                System.out.println(pelaajat.get(i).toString() + " " + pelaajat.get(i).getPisteet() + " pistettä.");
+            } 
+        } else if (milloin.equals("lopussa")) {
+            for (int i = 0; i < pelaajat.size(); i++) {
+                System.out.println(pelaajat.get(i).toString() + " " + pelaajat.get(i).getPisteet() + " pistettä.");
+            }
         }
     }
+    
 
     /**
      * Tarkistaa että kortin voi nostaa.
@@ -177,7 +200,11 @@ public class kierroksenLogiikka {
         int maxPisteet = 0;
         int voittajanNumero = 0;
         
-        for(int i = 0; i < pelaajat.size();i++){
+        if(pelaajat.size()==1){
+            return pelaajat.get(0).toString();
+        }
+        
+        for(int i = 0; i < pelaajat.size()-1;i++){
             maxPisteet = pelaajat.get(i).getPisteet();
             voittajanNumero = i;
             if(pelaajat.get(i+1).getPisteet() > pelaajat.get(i).getPisteet()){

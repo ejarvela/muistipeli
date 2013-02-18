@@ -25,6 +25,8 @@ public class TiedostonLukija {
      */
     private ArrayList<String> kuvalista;
 
+    int kuvienMaara;
+    
     public TiedostonLukija(File tiedosto) throws Exception {
         this.tiedosto = tiedosto;
         this.kuvalista = new ArrayList<String>();
@@ -38,15 +40,19 @@ public class TiedostonLukija {
      */
     public ArrayList haeKuvat() throws Exception {
         Scanner lukija = new Scanner(this.tiedosto);
-        int i = 0;
+        kuvienMaara = 0;
         while (lukija.hasNextLine()) {
             String rivi = lukija.nextLine();
-            i++;
+            kuvienMaara++;
             kuvalista.add(rivi);
         }
         
         lukija.close();
 
         return kuvalista;
+    }
+    
+    public int haeKuvienMaara(){
+        return kuvienMaara;
     }
 }
