@@ -1,0 +1,43 @@
+AIHEMÄÄRITTELY:
+
+Aihe: Muistipeli
+
+Toteutetaan tekstipohjaisen käyttöliittymän avulla muistipeli.
+
+Muistipelissä pelaajan on tarkoituksena saada kerättyä mahdollisimman monta kuvaparia mahdollisimman 
+vähillä vuoroilla. Tarkempi selostus löytyy Wikipediasta: http://fi.wikipedia.org/wiki/Muistipeli.
+
+Tässä toteutettava muistipeli on 1-4 pelaajan muistipeli. Pelaajat voivat itse valita vaikeustason (eli kuvaparien lukumäärän) neljästä eri vaihtoehdosta.
+
+
+Käyttäjät: Pelaaja ja Ylläpito
+
+Kaikkien käyttäjien toiminnot:
+
+ käyttäjänimen valinta
+
+ pelin pelaaminen
+   - vaikeustason valinta
+   - kuvien avaaminen
+
+Pelaajan toiminnot:
+
+ käyttäjänimen valinta
+
+ pelin pelaaminen
+   - vaikeustason valitan
+   - kuvien avaaminen
+
+
+Ylläpidon toiminnot:
+ - kuvien lisääminen muistipeliin
+
+
+
+RAKENNEKUVAUS:
+
+Muistipeli koostuu main-luokan lisäksi seitsemästä eri luokasta. Nämä ovat Kortti, Pelaaja, Muistipeli, Pelilauta, TiedostonLukija, Pelilogiikka ja KuvanAvaus. 
+
+Main-metodi luo uuden Muistipelin ja käynnistää sen. Uusi Muistipeli kysyy pelaajien määrän ja nimet sekä pelin vaikeustason. Muistipeli luo uuden pelilaudan peliä varten. Pelilauta luo ja käsittelee pelissä käytettäviä kortteja, vastaa pelilaudan järjestyksestä sekä siitä että se näyttää oikealta.
+
+Pelilaudan luomisen jälkeen Muistipeli luo uuden Pelilogiikan käynnissä olevan pelin tietojen mukaan. Muistipeli käynnistää Pelilogiikan käytön. Pelilogiikka huolehtii varsinaisista pelikierroksista, eli esimerkiksi kuvien avaamisesta ja sulkemisesta ja korttiparien tarkistamisesta. Kun kaikki korttiparit on nostettu, Pelilogiikka lopettaa pelin.

@@ -12,4 +12,7 @@ Tuntikirjanpito:
 11.2.	1h	pajaohjaus
 12.2.	5h	javadoc, sovelluslogiikka, sekvenssikaavioita
 15.2.	2.5h	koodausta
+18.2.	2h	demotilaisuus
+19.2.	
+
 

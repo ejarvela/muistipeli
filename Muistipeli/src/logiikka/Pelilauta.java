@@ -258,21 +258,4 @@ public class Pelilauta {
         
         return pelilaudanNumerot;
     }
-    
-    /**
-     * Tekee listan pelilaudan numeroista käyttäjän määrittelemän korttien määrän mukaan.
-     * 
-     * @param korttienMaara Montako erilaista korttia pelilaudalla on.
-     * @return Pelilaudan numerot.
-     */
-    public ArrayList<Integer> teePelilaudanNumerot(Integer korttienMaara){
-        
-        pelilaudanNumerot = new ArrayList<Integer>();
-        
-        for (int i = 1; i < korttienMaara * 2+1; i++) {
-            pelilaudanNumerot.add(i);
-        }
-        
-        return pelilaudanNumerot;
-    }
 }
