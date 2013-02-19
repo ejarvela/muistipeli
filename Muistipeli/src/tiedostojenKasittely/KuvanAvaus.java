@@ -43,6 +43,7 @@ public class KuvanAvaus extends Panel {
             try {
                 img = ImageIO.read(new File(kuvanNimi));
             } catch (IOException e) {
+                System.out.println("Tarkista tiedostonimi.");
             }
     }
 
@@ -71,6 +72,9 @@ public class KuvanAvaus extends Panel {
         
     }
     
+    /**
+     * Sulkee kuvan.
+     */
     public void suljeKuva(){
         frame.dispose();
     }

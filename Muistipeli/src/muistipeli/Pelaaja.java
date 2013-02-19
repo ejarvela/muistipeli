@@ -19,6 +19,10 @@ public class Pelaaja {
     */
    private int pisteet;
    
+   /**
+    * Luo uuden pelaajan ja asettaa nimeksi parametrina annetun nimen.
+    * @param nimi Pelaajan nimi.
+    */
    public Pelaaja (String nimi){
        this.nimi = nimi;
        this.pisteet = 0;

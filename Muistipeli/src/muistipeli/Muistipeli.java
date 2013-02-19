@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import logiikka.Pelilauta;
-import logiikka.kierroksenLogiikka;
-import tiedostojenKasittely.KuvanAvaus;
+import logiikka.Pelilogiikka;
 
 /**
  * Muistipelin käyttöliittymä.
@@ -36,7 +35,19 @@ public class Muistipeli {
      * Korttien sijainnit pöydällä.
      */
     HashMap<Integer, Kortti> kortitPoydalla;
+    /**
+     * Montako pelaajaa.
+     */
+    public int pelaajienMaara;
+    /**
+     * Pelin vaikeustaso.
+     */
+    public int vaikeus;
 
+    /**
+     * Luo uuden Muistipelin.
+     * @param lukija Lukija.
+     */
     public Muistipeli(Scanner lukija) {
         this.lukija = lukija;
         pelaajat = new ArrayList<Pelaaja>();
@@ -51,61 +62,65 @@ public class Muistipeli {
      */
     public void kaynnista() throws Exception {
         
-        System.out.println("Tervetuloa Muistipeliin!");
-        System.out.println("");
-        System.out.println("Montako pelaajaa? (1-4)");
-
-        int pelaajienMaara;
-
-        pelaajienMaara = Integer.parseInt(lukija.nextLine());
-
-        while (pelaajienMaara > 4 || pelaajienMaara < 1) {
-            System.out.println("Anna pelaajien lukumäärä väliltä 1-4.");
-            pelaajienMaara = Integer.parseInt(lukija.nextLine());
+        String onkoLuku;
+        
+        System.out.println("Tervetuloa Muistipeliin!\n");
+        
+        while (true) {
+            try {
+                System.out.println("Anna pelaajien lukumäärä väliltä 1-4.");
+                onkoLuku = lukija.nextLine();
+                onkoLuku = onkoLuku.trim();
+                pelaajienMaara = Integer.parseInt(onkoLuku);
+                if (pelaajienMaara < 5 && pelaajienMaara > 0) {
+                    break;
+                }
+                System.out.println("\nVäärä syöte.");
+            } catch (NumberFormatException e) {
+                System.out.println("\nVäärä syöte.");
+            }
         }
 
-        System.out.println("Anna pelaajien nimet yksi kerrallaan.");
-        System.out.println("");
+        System.out.println("\nAnna pelaajien nimet yksi kerrallaan.");
 
         String nimi;
 
         for (int i = 0; i < pelaajienMaara; i++) {
-            System.out.println("Osallistujan nimi:");
+            System.out.println("\nOsallistujan nimi:");
             nimi = lukija.nextLine();
             pelaajat.add(new Pelaaja(nimi));
         }
         
-        System.out.println("");
-        System.out.println("Valitse vaikeustaso.");
-        System.out.println("1 - 3x4");
-        System.out.println("2 - 4x5");
-        System.out.println("3 - 5x6");
-        System.out.println("4 - 6x7");
-
-        int vaikeus;
-        vaikeus = Integer.parseInt(lukija.nextLine());
-
-        while (vaikeus > 4 || vaikeus < 1) {
-            System.out.println("Valitse vaikeustaso 1, 2, 3 tai 4.");
-            vaikeus = Integer.parseInt(lukija.nextLine());
+        while (true) {
+            try {
+                System.out.println("\nValitse vaikeustaso.");
+                System.out.println("1 - 3x4");
+                System.out.println("2 - 4x5");
+                System.out.println("3 - 5x6");
+                System.out.println("4 - 6x7");
+                onkoLuku = lukija.nextLine();
+                onkoLuku = onkoLuku.trim();
+                vaikeus = Integer.parseInt(onkoLuku);
+                if (vaikeus < 5 && vaikeus > 0) {
+                    break;
+                }
+                System.out.println("\nVäärä syöte.");
+            } catch (NumberFormatException e) {
+                System.out.println("\nVäärä syöte.");
+            }
         }
         
         pelilauta.maaritaKorttienMaara(vaikeus);
-        
         pelilauta.arvoKuvat(vaikeus);
         pelilauta.luoKortit();
-
-        System.out.println("");
-        System.out.println("Peli alkaa.");
-        System.out.println("");
+        
+        System.out.println("\nPeli alkaa.\n");
         
         kortitPoydalla = pelilauta.asetaKortitPoydalle();
-        
         pelilauta.teePelilaudanNumerot();
         pelilaudanNumerot = pelilauta.getPelilaudanNumerot();
         
-        kierroksenLogiikka kierros = new kierroksenLogiikka(pelilauta, pelaajat, lukija, kortitPoydalla, pelilaudanNumerot);
-        kierros.tulostaPelaajienPistetilanne("pelissa");
+        Pelilogiikka kierros = new Pelilogiikka(pelilauta, pelaajat, lukija, kortitPoydalla, pelilaudanNumerot);
         kierros.pelaa();
     }
 }

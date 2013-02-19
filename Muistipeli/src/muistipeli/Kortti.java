@@ -16,10 +16,14 @@ public class Kortti {
      */
    private String nimi;
    /**
-    * Kuvan avaus;
+    * Kuvan avaus.
     */
    KuvanAvaus kuva;
    
+   /**
+    * Luo kortin ja asettaa sille parametrina annetun nimen.
+    * @param nimi Kortin nimi.
+    */
    public Kortti (String nimi){
        this.nimi = nimi;
 }

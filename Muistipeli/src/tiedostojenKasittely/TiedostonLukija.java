@@ -24,9 +24,16 @@ public class TiedostonLukija {
      * Lista kuvien tiedostonimistä.
      */
     private ArrayList<String> kuvalista;
-
+    /**
+     * Listassa olevien kuvien määrä.
+     */
     int kuvienMaara;
     
+    /**
+     * Luo uuden tiedostonlukijan.
+     * @param tiedosto Luettava tiedosto.
+     * @throws Exception 
+     */
     public TiedostonLukija(File tiedosto) throws Exception {
         this.tiedosto = tiedosto;
         this.kuvalista = new ArrayList<String>();
@@ -52,7 +59,7 @@ public class TiedostonLukija {
         return kuvalista;
     }
     
-    public int haeKuvienMaara(){
+    public int getKuvienMaara(){
         return kuvienMaara;
     }
 }

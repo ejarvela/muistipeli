@@ -11,7 +11,11 @@ import muistipeli.Pelaaja;
 import tiedostojenKasittely.TiedostonLukija;
 
 /**
- * Luo kussakin pelissä pelattavan pelilaudan. <p> Pelilauta arpoo yksittäisessä
+ * Pelissä käytettävä pelilauta. 
+ * 
+ * <p>
+ * 
+ * Pelilauta arpoo yksittäisessä
  * pelissä käytettävät kortit ja niiden paikat pöydällä.
  *
  * @author emilia
@@ -56,10 +60,18 @@ public class Pelilauta {
      */
     ArrayList<Pelaaja> pelaajat;
 
-     public Pelilauta() {
+    
+    /**
+     * Luo tyhjän pelilaudan.
+     */
+    public Pelilauta() {
        
     }
     
+    /**
+     * Luo tyhjän pelilaudan, jolle annetaan lista pelaajista parametrina.
+     * @param pelaajat Lista pelaajista.
+     */
     public Pelilauta(ArrayList<Pelaaja> pelaajat) {
         this.pelaajat = pelaajat;
     }
@@ -181,7 +193,7 @@ public class Pelilauta {
     /**
      * Arpoo korteille paikat pöydällä.
      *
-     * @return HashMap, numero-kuva -pareista.
+     * @return HashMap numero-kuva -pareista.
      */
     public HashMap<Integer, Kortti> asetaKortitPoydalle() {
 
@@ -237,6 +249,23 @@ public class Pelilauta {
      * @return Pelilaudan numerot.
      */
     public ArrayList<Integer> teePelilaudanNumerot(){
+        
+        pelilaudanNumerot = new ArrayList<Integer>();
+        
+        for (int i = 1; i < korttienMaara * 2+1; i++) {
+            pelilaudanNumerot.add(i);
+        }
+        
+        return pelilaudanNumerot;
+    }
+    
+    /**
+     * Tekee listan pelilaudan numeroista käyttäjän määrittelemän korttien määrän mukaan.
+     * 
+     * @param korttienMaara Montako erilaista korttia pelilaudalla on.
+     * @return Pelilaudan numerot.
+     */
+    public ArrayList<Integer> teePelilaudanNumerot(Integer korttienMaara){
         
         pelilaudanNumerot = new ArrayList<Integer>();
         
