@@ -13,6 +13,7 @@ Tuntikirjanpito:
 12.2.	5h	javadoc, sovelluslogiikka, sekvenssikaavioita
 15.2.	2.5h	koodausta
 18.2.	2h	demotilaisuus
-19.2.	
+19.2.	5h	luokkakaavio, koodia, dokumentaatioita
+22.2.	2h	testausdokumentaatio, viimeistely
 
 

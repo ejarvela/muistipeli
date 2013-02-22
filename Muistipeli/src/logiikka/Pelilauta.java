@@ -113,8 +113,6 @@ public class Pelilauta {
 
         kuvienNumerotListassa = new ArrayList<Integer>();
         kuvienNumerotListassa = arvoNumerot(korttienMaara, 21);
-
-        System.out.println(kuvienNumerotListassa.toString());
     }
 
     /**
@@ -187,8 +185,12 @@ public class Pelilauta {
             kortit.add(KortinNimi);
 
         }
+        
     }
-
+    
+    public ArrayList<Kortti> getKortit(){
+        return kortit;
+    }
 
     /**
      * Arpoo korteille paikat pöydällä.
@@ -242,8 +244,7 @@ public class Pelilauta {
     public ArrayList<Integer> getPelilaudanNumerot(){
         return pelilaudanNumerot;
     }
-    
-    
+       
     /**
      * Tekee listan pelilaudan numeroista.
      * @return Pelilaudan numerot.

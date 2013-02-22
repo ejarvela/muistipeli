@@ -3,6 +3,7 @@ package MuistipeliTestit.logiikkaTestit;
 import java.util.ArrayList;
 import java.util.Collections;
 import logiikka.Pelilauta;
+import muistipeli.Kortti;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,7 @@ public class PelilautaTest {
     Pelilauta lauta;
     ArrayList<Integer> numerolista;
     int korttienMaara;
+    ArrayList<Kortti> kortit;
 
     public PelilautaTest() {
     }
@@ -21,6 +23,7 @@ public class PelilautaTest {
 
         lauta = new Pelilauta();
         numerolista = new ArrayList<Integer>();
+        kortit = new ArrayList<Kortti>();
     }
 
     @Test
@@ -82,17 +85,5 @@ public class PelilautaTest {
         numerolista = lauta.arvoNumerot(13, 13);
         int min = Collections.min(numerolista);
         assertEquals(0, min);
-    }
-
-    @Test
-    public void oikeaMaaraPelilaudanNumeroita1() {
-        numerolista = lauta.teePelilaudanNumerot(12);
-        assertEquals(24, numerolista.size());
-    }
-
-    @Test
-    public void oikeaMaaraPelilaudanNumeroita2() {
-        numerolista = lauta.teePelilaudanNumerot(2);
-        assertEquals(4, numerolista.size());
     }
 }
